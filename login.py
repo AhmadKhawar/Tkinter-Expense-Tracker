@@ -1,3 +1,4 @@
+from dashboard import Dashboard
 import tkinter as tk
 from tkinter import messagebox
 from db import register_user, login_user, create_tables
@@ -32,7 +33,10 @@ class LoginApp:
         if user:
             messagebox.showinfo("Success", f"Welcome {username}!")
             self.root.destroy()
-            import expense_entry
+            from dashboard import Dashboard
+            new_root = tk.Tk()
+            Dashboard(new_root, user[0])
+            new_root.mainloop()
             # You can launch main app here
             
         else:
