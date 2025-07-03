@@ -31,7 +31,10 @@ class LoginApp:
         user = login_user(username, password)
         if user:
             messagebox.showinfo("Success", f"Welcome {username}!")
+            self.root.destroy()
+            import expense_entry
             # You can launch main app here
+            
         else:
             messagebox.showerror("Failed", "Invalid username or password.")
 
