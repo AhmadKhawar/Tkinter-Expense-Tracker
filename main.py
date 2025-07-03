@@ -6,4 +6,4 @@ if __name__ == "__main__":
     create_tables()  # Ensure DB is ready
     root = tk.Tk()
     app = LoginApp(root)
-    root.mainloop(
+    root.mainloop()
