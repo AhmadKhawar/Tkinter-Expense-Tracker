@@ -7,11 +7,10 @@ class LoginApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Login / Register")
-        self.root.geometry("300x300")
+        self.root.geometry("300x250")
 
         self.username_var = tk.StringVar()
         self.password_var = tk.StringVar()
-        self.confirm_password_var = tk.StringVar()
 
         tk.Label(root, text="Username").pack(pady=5)
         tk.Entry(root, textvariable=self.username_var).pack(pady=5)
@@ -19,26 +18,8 @@ class LoginApp:
         tk.Label(root, text="Password").pack(pady=5)
         tk.Entry(root, textvariable=self.password_var, show="*").pack(pady=5)
 
-        tk.Label(root, text="Confirm Password").pack(pady=5)
-        tk.Entry(root, textvariable=self.confirm_password_var, show="*").pack(pady=5)
-
-        tk.Button(
-            root,
-            text="Login",
-            command=self.login,
-            bg="#4CAF50",
-            fg="white",
-            activebackground="#45a049"
-        ).pack(pady=10)
-
-        tk.Button(
-            root,
-            text="Register",
-            command=self.register,
-            bg="#2196F3",
-            fg="white",
-            activebackground="#1976D2"
-        ).pack()
+        tk.Button(root, text="Login", command=self.login).pack(pady=10)
+        tk.Button(root, text="Register", command=self.register).pack()
 
     def login(self):
         username = self.username_var.get()
@@ -56,20 +37,17 @@ class LoginApp:
             new_root = tk.Tk()
             Dashboard(new_root, user[0])
             new_root.mainloop()
+            # You can launch main app here
+            
         else:
             messagebox.showerror("Failed", "Invalid username or password.")
 
     def register(self):
         username = self.username_var.get()
         password = self.password_var.get()
-        confirm_password = self.confirm_password_var.get()
 
-        if not username or not password or not confirm_password:
+        if not username or not password:
             messagebox.showwarning("Input Error", "Please fill in all fields.")
-            return
-
-        if password != confirm_password:
-            messagebox.showerror("Password Mismatch", "Passwords do not match.")
             return
 
         success = register_user(username, password)
