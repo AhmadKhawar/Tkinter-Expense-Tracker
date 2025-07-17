@@ -7,6 +7,8 @@ class ExpenseEntryApp:
         self.root = root
         self.root.title("Add Expense..")
         self.root.geometry("400x350")
+        self.root.configure(bg="#f0f0f0")  # ✅ Changed background color
+
         self.user_id = user_id
 
         self.date_var = tk.StringVar()
@@ -14,19 +16,20 @@ class ExpenseEntryApp:
         self.desc_var = tk.StringVar()
         self.amount_var = tk.StringVar()
 
-        tk.Label(root, text="Date (YYYY-MM-DD)").pack(pady=5)
+        tk.Label(root, text="Date (YYYY-MM-DD)", bg="#f0f0f0").pack(pady=5)
         tk.Entry(root, textvariable=self.date_var).pack(pady=5)
 
-        tk.Label(root, text="Category").pack(pady=5)
+        tk.Label(root, text="Category", bg="#f0f0f0").pack(pady=5)
         tk.Entry(root, textvariable=self.category_var).pack(pady=5)
 
-        tk.Label(root, text="Description").pack(pady=5)
+        tk.Label(root, text="Description", bg="#f0f0f0").pack(pady=5)
         tk.Entry(root, textvariable=self.desc_var).pack(pady=5)
 
-        tk.Label(root, text="Amount").pack(pady=5)
+        tk.Label(root, text="Amount", bg="#f0f0f0").pack(pady=5)
         tk.Entry(root, textvariable=self.amount_var).pack(pady=5)
 
-        tk.Button(root, text="Add Expense", command=self.save_expense).pack(pady=15)
+        # ✅ Styled the button
+        tk.Button(root, text="Add Expense", command=self.save_expense, bg="#007ACC", fg="white").pack(pady=15)
 
     def save_expense(self):
         date = self.date_var.get()
