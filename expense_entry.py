@@ -5,7 +5,7 @@ from db import add_expense, create_tables
 class ExpenseEntryApp:
     def __init__(self, root, user_id):
         self.root = root
-        self.root.title("Add Expense")
+        self.root.title("Add Expense..")
         self.root.geometry("400x350")
         self.user_id = user_id
 
